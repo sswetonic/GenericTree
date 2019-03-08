@@ -11,5 +11,17 @@ public class Tree<E> {
         this.root = root;
     }
 
+    public Node<E> getNode(E data) {
+        Node<E> current = root;
+        for (E nodeData : current.getChildren().keySet()) {
 
+
+            Node<E> child = current.getChild(nodeData);
+            if (child.getData() == data) {
+                return child;
+            }
+            current = child;
+        }
+        return null;
+    }
 }

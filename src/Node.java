@@ -1,13 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Node<E> {
     private E data;
-    private List<Node<E>> children;
+    private Map<E, Node<E>> children = new HashMap<>();
 
     public Node(E data) {
         this.data = data;
-        children = new ArrayList<>();
     }
 
     public E getData() {
@@ -18,11 +19,15 @@ public class Node<E> {
         this.data = data;
     }
 
-    public List<Node<E>> getChildren() {
+    Map<E, Node<E>> getChildren() {
         return children;
     }
 
+    Node<E> getChild(E data) {
+        return children.get(data);
+    }
+
     public void addChild(Node<E> child) {
-        children.add(child);
+        this.children.put(child.data, child);
     }
 }
